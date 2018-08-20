@@ -30,11 +30,9 @@ export class AppComponent {
   moneytoword () {
     this.moneydollar = [100, 50, 20, 10, 5, 1, 25, 10, 5, 1];
     this.qtydollar = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    console.log('Money : ', this.money);
     this.dollars  = Math.floor(this.money);
     this.cents = Math.round((this.money - Math.floor(this.money) ) * 100);
-    console.log('Dolars : ', this.dollars);
-    console.log('Cents : ', this.cents);
+
     this.messagemoeny = 'Your chagne is ';
     this.flagaddcomma = false;
 
@@ -52,8 +50,6 @@ export class AppComponent {
           this.cents %= this.moneydollar[i];
           this.flagaddcomma = true;
         }
-        console.log(this.qtydollar[i]);
-
         if (this.qtydollar[i] > 0) {
           this.flaglast = i;
         }
@@ -64,47 +60,25 @@ export class AppComponent {
         if (i < this.flaglast &&  this.messagemoeny !== 'Your chagne is ') {
           this.messagemoeny +=  ', ';
         }
-
         if (i === this.flaglast) {
           this.messagemoeny += ' and ';
         }
-
         this.messagemoeny += this.qtydollar[i].toString() + ' ' + this.moneydollar[i].toString();
         this.flagaddcomma = true;
-
         if (this.qtydollar[i] ===  1) {
           this.messagemoeny += this.typedollar[i].toString();
         } else {
           this.messagemoeny += this.typedollars[i].toString();
         }
-
-
-
       }
-
     }
-    console.log(this.moneydollar);
-    console.log(this.qtydollar);
-    console.log(this.flaglast);
-
   }
 
   onClickMe() {
     this.moneytoword();
   }
 
-  addcomma() {
-    if (this.flagaddcomma) {
-      this.messagemoeny += ', ';
-    }
 
-  }
-
-
-
-  lastdata() {
-
-  }
 
 }
 
